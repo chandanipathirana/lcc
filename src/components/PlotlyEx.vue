@@ -1,6 +1,8 @@
 <template>
+  
   <!-- Mustaches cannot be used inside HTML attributes. Instead, use a v-bind directive. v-bind:id= shortcut :id= -->
   <div :id="id"></div>
+  
 </template>
 
 <script setup>

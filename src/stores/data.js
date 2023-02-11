@@ -46,8 +46,9 @@ export const useDataStore = defineStore('maindata', () => {
 
     for (var step = 1; step <= n_projects.value; step++){
       console.log("Project - ", step)
+      console.log("project_details", project_details.value)
       d[0].x.push(step)
-      d[0].y.push(project_details.value["P"+step].init_cost)
+      d[0].y.push(project_details.value[step].init_cost)
     }
   
     console.log(d)
