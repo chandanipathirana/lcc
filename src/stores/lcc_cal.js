@@ -34,7 +34,7 @@ export function calc_lcc(i_rate,
       AV[4].push(an_in*(1+es_in/100.)**p)
   
     }
-    console.log ("Annual En : ", an_en)
+    // colors[n_project]log ("Annual En : ", an_en)
     
     //Present Annual Value
     const PAV = [
@@ -134,15 +134,15 @@ export function calc_lcc(i_rate,
       [],
       []
       ]
-      console.log ("HERE", exp_life)
+    //   console.log ("HERE", exp_life)
     for (var i=0; i < exp_life; i ++){
-      CPVT[0][i] = -1*( CAPV[0][i])
+      CPVT[0][i] = ( CAPV[0][i])
       CPVT[1][i] = -1*( CAPV[1][i]+ CMAPV[1][i])
       CPVT[2][i] = -1*( CAPV[2][i]+ CMAPV[2][i])
       CPVT[3][i] = -1*( CAPV[3][i]+ CMAPV[3][i])
       CPVT[4][i] = ( CAPV[4][i])
       CPVT[5][i] = CPVT[1][i]+CPVT[2][i]+CPVT[3][i]+CPVT[4][i]-init_cost
-      console.log ("i : ", i)
+    //   console.log ("i : ", i)
     }
    
    const CPVTF = [

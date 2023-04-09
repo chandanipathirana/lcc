@@ -165,7 +165,7 @@
 
    const props = defineProps(['projectNumber'])
 
-   console.log("PN: " , props.projectNumber)
+//    console.log("PN: " , props.projectNumber)
    if (props.projectNumber>1){
         
    }

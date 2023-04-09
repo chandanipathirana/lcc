@@ -28,27 +28,23 @@ export const useDataStore = defineStore('maindata', () => {
       mulAn_cy: 5,
     }
   }
-  // console.log(project_details.value.P1.init_cost)
+  // colors[n_project]log(project_details.value.P1.init_cost)
 
   const data = ref([])
   const config = ref({})
   const layout = ref({})
-
+  var colors = ['yellow', 'darkblue', 'firebrick', 'purple','darkgray', 'darkgreen']
   config.value= { displayModeBar: true }
   layout.value= { margin: {l:20, r:20, t:30, b:20} }
 
 
   function getData(type){
 
-    var d = [{
-      x: [],
-      y: [],
-      type: "scatter"
-    }]
+    var d = [{}]
 
     for (var n_project = 1; n_project <= n_projects.value; n_project++){
-      console.log("Project - ", n_project)
-      console.log("exp_life - ", project_details.value[n_project].exp_life)
+      // console.log("Project - ", n_project)
+      // colors[n_project]log("exp_life - ", project_details.value[n_project].exp_life)
 
       var results = calc_lcc(i_rate.value,
         n_project,
@@ -67,15 +63,42 @@ export const useDataStore = defineStore('maindata', () => {
         project_details.value[n_project].mulAn_cy,
         project_details.value[n_project].init_cost)
         
-        console.log("Results : ", n_project, "expected life : ", project_details.value[n_project].exp_life, results)//results.CPVT[5][0], results.CPVT[5].slice(-1))
+        // colors[n_project]log("Results : ", n_project, "expected life : ", project_details.value[n_project].exp_life, results)//results.CPVT[5][0], results.CPVT[5].slice(-1))
 
 
-      // console.log("project_details", project_details.value)
-      d[0].x.push(n_project)
-      d[0].y.push(project_details.value[n_project].init_cost)
+      // colors[n_project]log("project_details", project_details.value)
+      for (var i=0; i<5; i++){
+        d.push({
+        x: [],
+        y: [],
+        type: "scatter"
+      })
+    }
+      console.log("d : ", d.length)
+      d[1+(n_project-1)*5+0].x = results.CPVT[0]
+      d[1+(n_project-1)*5+0].y = results.CPVT[1]
+      d[1+(n_project-1)*5+0].line={"color":colors[n_project], "width":2, "dash":'dot'}
+      d[1+(n_project-1)*5+0].name= n_project.toString()+' Energy'
+      d[1+(n_project-1)*5+1].x = results.CPVT[0]
+      d[1+(n_project-1)*5+1].y = results.CPVT[2]
+      d[1+(n_project-1)*5+1].line={"color":colors[n_project], "width":2, "dash":'dashdot'}
+      d[1+(n_project-1)*5+1].name= n_project.toString()+' Material'
+      d[1+(n_project-1)*5+2].x = results.CPVT[0]
+      d[1+(n_project-1)*5+2].y = results.CPVT[3]
+      d[1+(n_project-1)*5+2].line={"color":colors[n_project], "width":2, "dash":'dash'}
+      d[1+(n_project-1)*5+2].name= n_project.toString()+' Labour'
+      d[1+(n_project-1)*5+3].x = results.CPVT[0]
+      d[1+(n_project-1)*5+3].y = results.CPVT[4]
+      d[1+(n_project-1)*5+3].line={"color":colors[n_project], "width":2, "dash":'solid'}
+      d[1+(n_project-1)*5+3].name= n_project.toString()+' Income'
+      d[1+(n_project-1)*5+4].x = results.CPVT[0]
+      d[1+(n_project-1)*5+4].y = results.CPVT[5]
+      d[1+(n_project-1)*5+4].line={"color":colors[n_project], "width":4, "dash":'solid'}
+      d[1+(n_project-1)*5+4].name= n_project.toString()+' Net Income'
+
     }
   
-    // console.log(d)
+    // colors[n_project]log(d)
     if (type=="pie"){
       d=[{values: d[0].y,
         labels: d[0].x,
