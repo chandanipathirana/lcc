@@ -46,7 +46,7 @@
                     
                     <!-- <td :class="{testHead: projectNumber>1}" colspan="2"> Annual </td>  -->
                         <!-- <th class="d-inline-flex p-2 bd-highlight row">Annual</th> -->
-                        <th class="d-flex justify-content-evenly">Annual</th>
+                        <th class="d-flex justify-content-evenly">Annual costs</th>
 
                     </tr>
                     <tr>
@@ -56,7 +56,7 @@
                             <div class="input-group mb-1">
                             
                                 <input type="number" v-model="storeData.project_details[projectNumber].an_en" class="form-control" >
-                                <span class="input-group-text" id="basic-addon1">%</span>
+                                <span class="input-group-text" id="basic-addon1">Eur</span>
                             </div>
                         </div>
                     </td>
@@ -68,7 +68,7 @@
                             <div class="input-group mb-1">
                             
                                 <input type="number" v-model="storeData.project_details[projectNumber].an_mt" class="form-control" >
-                                <span class="input-group-text" id="basic-addon1">%</span>
+                                <span class="input-group-text" id="basic-addon1">Eur</span>
                             </div>
                         </div>
                     </td>
@@ -80,7 +80,7 @@
                             <div class="input-group mb-1">
                             
                                 <input type="number" v-model="storeData.project_details[projectNumber].an_lb" class="form-control" >
-                                <span class="input-group-text" id="basic-addon1">%</span>
+                                <span class="input-group-text" id="basic-addon1">Eur</span>
                             </div>
                         </div>
                     </td>
@@ -92,13 +92,13 @@
                             <div class="input-group mb-1">
                             
                                 <input type="number" v-model="storeData.project_details[projectNumber].an_in" class="form-control" >
-                                <span class="input-group-text" id="basic-addon1">%</span>
+                                <span class="input-group-text" id="basic-addon1">Eur</span>
                             </div>
                         </div>
                     </td>
                     </tr>
                     <tr class="table-light fw-bold ">
-                    <td colspan="2"> Multi Annual </td> 
+                    <td colspan="2"> Multi Annual costs</td> 
                     
                     </tr>
                     <tr>
@@ -108,7 +108,7 @@
                             <div class="input-group mb-1">
                             
                                 <input type="number" v-model="storeData.project_details[projectNumber].mulAn_en" class="form-control" >
-                                <span class="input-group-text" id="basic-addon1">%</span>
+                                <span class="input-group-text" id="basic-addon1">Eur</span>
                             </div>
                         </div>
                     </td>
@@ -120,7 +120,7 @@
                             <div class="input-group mb-1">
                             
                                 <input type="number" v-model="storeData.project_details[projectNumber].mulAn_mt" class="form-control" >
-                                <span class="input-group-text" id="basic-addon1">%</span>
+                                <span class="input-group-text" id="basic-addon1">Eur</span>
                             </div>
                         </div>
                     </td>
@@ -132,7 +132,7 @@
                             <div class="input-group mb-1">
                             
                                 <input type="number" v-model="storeData.project_details[projectNumber].mulAn_lb" class="form-control" >
-                                <span class="input-group-text" id="basic-addon1">%</span>
+                                <span class="input-group-text" id="basic-addon1">Eur</span>
                             </div>
                         </div>
                     </td>
