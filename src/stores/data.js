@@ -13,21 +13,23 @@ export const useDataStore = defineStore('maindata', () => {
   const es_in = ref(2)
   const test_projects = []
   const project_details = ref({})
-  for (var i = 1; i < 10; i++ ){
+  for (var i = 1; i <= 3; i++ ){
     // project_details.value['P'+i]={
       project_details.value[i]={
-      init_cost: 250000, 
+      init_cost: 250000+(i-1)*50000, 
       exp_life: 20,
-      an_en: 9000,
-      an_mt: 12000,
-      an_lb: 8000,
-      an_in: 50000,
+      an_en: 9000-(i-1)*2000,
+      an_mt: 12000-(i-1)*3000,
+      an_lb: 8000-(i-1)*2000,
+      an_in: 50000+(i-1)*20000,
       mulAn_en: 10000,
       mulAn_mt: 9000,
       mulAn_lb: 12000,
       mulAn_cy: 5,
     }
   }
+  
+
   // colors[n_project]log(project_details.value.P1.init_cost)
 
   const data = ref([])
