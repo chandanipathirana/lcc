@@ -1,5 +1,13 @@
  [
-            {
+    {
+        "countryCode": "NL",
+        "countryName": "Netherlands",
+        "currencyCode": "EUR",
+        "population": "16645000",
+        "capital": "Amsterdam",
+        "continentName": "Europe"
+    },
+    {
                 "countryCode": "AD",
                 "countryName": "Andorra",
                 "currencyCode": "EUR",
@@ -62,14 +70,6 @@
                 "population": "13068161",
                 "capital": "Luanda",
                 "continentName": "Africa"
-            },
-            {
-                "countryCode": "AQ",
-                "countryName": "Antarctica",
-                "currencyCode": "",
-                "population": "0",
-                "capital": "",
-                "continentName": "Antarctica"
             },
             {
                 "countryCode": "AR",
@@ -1318,14 +1318,6 @@
                 "population": "5995928",
                 "capital": "Managua",
                 "continentName": "North America"
-            },
-            {
-                "countryCode": "NL",
-                "countryName": "Netherlands",
-                "currencyCode": "EUR",
-                "population": "16645000",
-                "capital": "Amsterdam",
-                "continentName": "Europe"
             },
             {
                 "countryCode": "NO",

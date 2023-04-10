@@ -5,7 +5,7 @@ import{calc_lcc} from './lcc_cal.js'
 
 export const useDataStore = defineStore('maindata', () => {
   const n_projects = ref(1)
-  const currency = ref('')
+  const currency = ref('EUR')
   const i_rate = ref(5)
   const es_en = ref(2)
   const es_mt = ref(2)

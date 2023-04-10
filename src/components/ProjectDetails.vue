@@ -23,7 +23,7 @@
                             <div class="input-group mb-1">
                             
                                 <input v-model="storeData.project_details[projectNumber].init_cost" type="number" class="form-control" > 
-                                <span class="input-group-text" id="basic-addon1">Eur</span>
+                                <span class="input-group-text" id="basic-addon1">{{storeData.currency}}</span>
                             </div>
                             
                         </div>
@@ -56,7 +56,7 @@
                             <div class="input-group mb-1">
                             
                                 <input type="number" v-model="storeData.project_details[projectNumber].an_en" class="form-control" >
-                                <span class="input-group-text" id="basic-addon1">Eur</span>
+                                <span class="input-group-text" id="basic-addon1">{{storeData.currency}}</span>
                             </div>
                         </div>
                     </td>
@@ -68,7 +68,7 @@
                             <div class="input-group mb-1">
                             
                                 <input type="number" v-model="storeData.project_details[projectNumber].an_mt" class="form-control" >
-                                <span class="input-group-text" id="basic-addon1">Eur</span>
+                                <span class="input-group-text" id="basic-addon1">{{storeData.currency}}</span>
                             </div>
                         </div>
                     </td>
@@ -80,7 +80,7 @@
                             <div class="input-group mb-1">
                             
                                 <input type="number" v-model="storeData.project_details[projectNumber].an_lb" class="form-control" >
-                                <span class="input-group-text" id="basic-addon1">Eur</span>
+                                <span class="input-group-text" id="basic-addon1">{{storeData.currency}}</span>
                             </div>
                         </div>
                     </td>
@@ -92,7 +92,7 @@
                             <div class="input-group mb-1">
                             
                                 <input type="number" v-model="storeData.project_details[projectNumber].an_in" class="form-control" >
-                                <span class="input-group-text" id="basic-addon1">Eur</span>
+                                <span class="input-group-text" id="basic-addon1">{{storeData.currency}}</span>
                             </div>
                         </div>
                     </td>
@@ -108,7 +108,7 @@
                             <div class="input-group mb-1">
                             
                                 <input type="number" v-model="storeData.project_details[projectNumber].mulAn_en" class="form-control" >
-                                <span class="input-group-text" id="basic-addon1">Eur</span>
+                                <span class="input-group-text" id="basic-addon1">{{storeData.currency}}</span>
                             </div>
                         </div>
                     </td>
@@ -120,7 +120,7 @@
                             <div class="input-group mb-1">
                             
                                 <input type="number" v-model="storeData.project_details[projectNumber].mulAn_mt" class="form-control" >
-                                <span class="input-group-text" id="basic-addon1">Eur</span>
+                                <span class="input-group-text" id="basic-addon1">{{storeData.currency}}</span>
                             </div>
                         </div>
                     </td>
@@ -132,7 +132,7 @@
                             <div class="input-group mb-1">
                             
                                 <input type="number" v-model="storeData.project_details[projectNumber].mulAn_lb" class="form-control" >
-                                <span class="input-group-text" id="basic-addon1">Eur</span>
+                                <span class="input-group-text" id="basic-addon1">{{storeData.currency}}</span>
                             </div>
                         </div>
                     </td>
