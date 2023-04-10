@@ -42,11 +42,14 @@
                         </div>
                     </td>
                     </tr>
-                    <tr > 
+                     
                     
                     <!-- <td :class="{testHead: projectNumber>1}" colspan="2"> Annual </td>  -->
                         <!-- <th class="d-inline-flex p-2 bd-highlight row">Annual</th> -->
-                        <th class="d-flex justify-content-evenly">Annual costs</th>
+                    <tr class="table-light fw-bold ">
+                    <td colspan="12"  v-if="projectNumber === 1">  Annual Costs</td> 
+                    <td colspan="2" v-else>AC</td>
+ 
 
                     </tr>
                     <tr>
@@ -98,7 +101,8 @@
                     </td>
                     </tr>
                     <tr class="table-light fw-bold ">
-                    <td colspan="2"> Multi Annual costs</td> 
+                    <td colspan="2" v-if="projectNumber === 1"> Multi Annual Costs</td> 
+                    <td colspan="2" v-else>MAC</td>
                     
                     </tr>
                     <tr>
