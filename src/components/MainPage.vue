@@ -7,10 +7,9 @@
    
    <div class="container-fluid text-center">
       <div class="row">
-
-         <div class="col-sm-12">
+         <div class="col-lg-12">
             <div class="row mb-1">
-               <div class="col-sm-4">
+               <div class="col-lg-6">
                   <h3>Project Details</h3>
                   <div class="d-flex flex-row">
                   
@@ -21,7 +20,7 @@
                      </div>
                   </div>
                </div>
-               <div class="col-sm-8">
+               <div class="col-lg-6">
                   <h3>Data Analysis</h3>
                   <PlotlyEx type="scatter"/>
                   <PlotlyEx type="pie" />
