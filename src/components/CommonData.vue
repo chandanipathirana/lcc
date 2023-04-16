@@ -1,12 +1,14 @@
 <template>
   <div class="container-fluid text-center">
-      <h1> Common Data </h1>
+      <h1> Life Cycle Cost Calculator </h1>
       <div class="row">
         <div class="col-sm-12">
            <div class="row mb-1">
-             <label for="No of Projects" class="col-sm-1 col-form-label">No of Projects (1 - 3)</label>
+             <label for="No of Projects" class="col-sm-1 col-form-label">#Projects </label>
             <div class="col-sm-1">
-              <input type="number" min="1" max="3" class="form-control" v-model="storeData.n_projects" >
+              <select type="number" min="1" max="3" class="form-control" v-model="storeData.n_projects" >
+                <option v-for="n in 3" :key="n" :value="n">{{n}}</option>
+              </select>
             </div>
             <label for="Currency" class="col-sm-1 col-form-label">Currency</label>
             <div class="col-sm-3">

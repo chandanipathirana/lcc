@@ -42,79 +42,17 @@ export const useDataStore = defineStore('maindata', () => {
 
   function getData(type){
 
-    var d = [{}]
-
-    for (var n_project = 1; n_project <= n_projects.value; n_project++){
-      // console.log("Project - ", n_project)
-      // colors[n_project]log("exp_life - ", project_details.value[n_project].exp_life)
-
-      var results = calc_lcc(i_rate.value,
-        n_project,
-        project_details.value[n_project].exp_life,
-        project_details.value[n_project].an_en ,
-        project_details.value[n_project].an_mt,
-        project_details.value[n_project].an_lb,
-        project_details.value[n_project].an_in,
-        es_en.value,
-        es_mt.value,
-        es_lb.value,
-        es_in.value,
-        project_details.value[n_project].mulAn_en,
-        project_details.value[n_project].mulAn_mt,
-        project_details.value[n_project].mulAn_lb,
-        project_details.value[n_project].mulAn_cy,
-        project_details.value[n_project].init_cost)
-        
-        // colors[n_project]log("Results : ", n_project, "expected life : ", project_details.value[n_project].exp_life, results)//results.CPVT[5][0], results.CPVT[5].slice(-1))
-
-
-      // colors[n_project]log("project_details", project_details.value)
-      for (var i=0; i<5; i++){
-        d.push({
-        x: [],
-        y: [],
-        type: "scatter"
-      })
-    }
-      console.log("d : ", d.length)
-      d[1+(n_project-1)*5+0].x = results.CPVT[0]
-      d[1+(n_project-1)*5+0].y = results.CPVT[1]
-      d[1+(n_project-1)*5+0].line={"color":colors[n_project], "width":2, "dash":'dot'}
-      d[1+(n_project-1)*5+0].name= n_project.toString()+' Energy'
-      d[1+(n_project-1)*5+1].x = results.CPVT[0]
-      d[1+(n_project-1)*5+1].y = results.CPVT[2]
-      d[1+(n_project-1)*5+1].line={"color":colors[n_project], "width":2, "dash":'dashdot'}
-      d[1+(n_project-1)*5+1].name= n_project.toString()+' Material'
-      d[1+(n_project-1)*5+2].x = results.CPVT[0]
-      d[1+(n_project-1)*5+2].y = results.CPVT[3]
-      d[1+(n_project-1)*5+2].line={"color":colors[n_project], "width":2, "dash":'dash'}
-      d[1+(n_project-1)*5+2].name= n_project.toString()+' Labour'
-      d[1+(n_project-1)*5+3].x = results.CPVT[0]
-      d[1+(n_project-1)*5+3].y = results.CPVT[4]
-      d[1+(n_project-1)*5+3].line={"color":colors[n_project], "width":2, "dash":'solid'}
-      d[1+(n_project-1)*5+3].name= n_project.toString()+' Income'
-      d[1+(n_project-1)*5+4].x = results.CPVT[0]
-      d[1+(n_project-1)*5+4].y = results.CPVT[5]
-      d[1+(n_project-1)*5+4].line={"color":colors[n_project], "width":4, "dash":'solid'}
-      d[1+(n_project-1)*5+4].name= n_project.toString()+' Net Income'
-
-    }
+    var chartData = scatterTs(n_projects, i_rate, project_details, es_en, es_mt, es_lb, es_in, colors)
   
-    // colors[n_project]log(d)
     if (type=="pie"){
-      d=[{values: d[0].y,
-        labels: d[0].x,
-        type:type, 
-        sort:false}]
+      chartData = pieChart(chartData)
     }
   
-    const c=config.value
-    const l=layout.value
   
     //Plotly seem to mutate these values. So, to ensure it does not happen, we deepcopy things. 
-    return  {data: JSON.parse(JSON.stringify(d)), 
-      config: JSON.parse(JSON.stringify(c)), 
-      layout: JSON.parse(JSON.stringify(l)) }
+    return  {data: JSON.parse(JSON.stringify(chartData)), 
+      config: JSON.parse(JSON.stringify(config.value)), 
+      layout: JSON.parse(JSON.stringify(layout.value)) }
   }
 
 
@@ -125,6 +63,74 @@ export const useDataStore = defineStore('maindata', () => {
 })
 
 
+
+function pieChart(d) {
+  d = [{
+    values: d[0].y,
+    labels: d[0].x,
+    type: "pie",
+    sort: false
+  }]
+  return d
+}
+
+function scatterTs(n_projects, i_rate, project_details, es_en, es_mt, es_lb, es_in, colors) {
+  var d = [{}]
+
+  for (var n_project = 1; n_project <= n_projects.value; n_project++) {
+    // console.log("Project - ", n_project)
+    // colors[n_project]log("exp_life - ", project_details.value[n_project].exp_life)
+    var results = calc_lcc(i_rate.value,
+      n_project,
+      project_details.value[n_project].exp_life,
+      project_details.value[n_project].an_en,
+      project_details.value[n_project].an_mt,
+      project_details.value[n_project].an_lb,
+      project_details.value[n_project].an_in,
+      es_en.value,
+      es_mt.value,
+      es_lb.value,
+      es_in.value,
+      project_details.value[n_project].mulAn_en,
+      project_details.value[n_project].mulAn_mt,
+      project_details.value[n_project].mulAn_lb,
+      project_details.value[n_project].mulAn_cy,
+      project_details.value[n_project].init_cost)
+
+    // colors[n_project]log("Results : ", n_project, "expected life : ", project_details.value[n_project].exp_life, results)//results.CPVT[5][0], results.CPVT[5].slice(-1))
+    // colors[n_project]log("project_details", project_details.value)
+    for (var i = 0; i < 5; i++) {
+      d.push({
+        x: [],
+        y: [],
+        type: "scatter"
+      })
+    }
+    console.log("d : ", d.length)
+    d[1 + (n_project - 1) * 5 + 0].x = results.CPVT[0]
+    d[1 + (n_project - 1) * 5 + 0].y = results.CPVT[1]
+    d[1 + (n_project - 1) * 5 + 0].line = { "color": colors[n_project], "width": 2, "dash": 'dot' }
+    d[1 + (n_project - 1) * 5 + 0].name = n_project.toString() + ' Energy'
+    d[1 + (n_project - 1) * 5 + 1].x = results.CPVT[0]
+    d[1 + (n_project - 1) * 5 + 1].y = results.CPVT[2]
+    d[1 + (n_project - 1) * 5 + 1].line = { "color": colors[n_project], "width": 2, "dash": 'dashdot' }
+    d[1 + (n_project - 1) * 5 + 1].name = n_project.toString() + ' Material'
+    d[1 + (n_project - 1) * 5 + 2].x = results.CPVT[0]
+    d[1 + (n_project - 1) * 5 + 2].y = results.CPVT[3]
+    d[1 + (n_project - 1) * 5 + 2].line = { "color": colors[n_project], "width": 2, "dash": 'dash' }
+    d[1 + (n_project - 1) * 5 + 2].name = n_project.toString() + ' Labour'
+    d[1 + (n_project - 1) * 5 + 3].x = results.CPVT[0]
+    d[1 + (n_project - 1) * 5 + 3].y = results.CPVT[4]
+    d[1 + (n_project - 1) * 5 + 3].line = { "color": colors[n_project], "width": 2, "dash": 'solid' }
+    d[1 + (n_project - 1) * 5 + 3].name = n_project.toString() + ' Income'
+    d[1 + (n_project - 1) * 5 + 4].x = results.CPVT[0]
+    d[1 + (n_project - 1) * 5 + 4].y = results.CPVT[5]
+    d[1 + (n_project - 1) * 5 + 4].line = { "color": colors[n_project], "width": 4, "dash": 'solid' }
+    d[1 + (n_project - 1) * 5 + 4].name = n_project.toString() + ' Net Income'
+
+  }
+  return d
+}
 // function setData() {
 //   return [{
 //     x: [1, 2, 3, 4],
