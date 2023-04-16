@@ -6,7 +6,7 @@
            <div class="row mb-1">
              <label for="No of Projects" class="col-md-1 col-form-label">#Projects </label>
             <div class="col-md-1">
-              <select type="number" min="1" max="3" class="form-control" v-model="storeData.n_projects" >
+              <select  min="1" max="3" class="form-control" v-model="storeData.n_projects" >
                 <option v-for="n in 3" :key="n" :value="n">{{n}}</option>
               </select>
             </div>

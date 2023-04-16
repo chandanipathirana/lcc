@@ -11,10 +11,7 @@ export const useDataStore = defineStore('maindata', () => {
   const es_mt = ref(useLocalStorage('es_mt',2))
   const es_lb = ref(useLocalStorage('es_lb',2))
   const es_in = ref(useLocalStorage('es_in',2))
-  const test_projects = []
   const project_details = ref(useLocalStorage('project_details', init_projects()))
-
-
    
   if (localStorage.getItem("maindata")){
     console.log("local storage", JSON.parse(localStorage.getItem("maindata")))
@@ -116,7 +113,7 @@ function scatterTs(n_projects, i_rate, project_details, es_en, es_mt, es_lb, es_
         type: "scatter"
       })
     }
-    console.log("d : ", d.length)
+    //console.log("d : ", d.length)
     d[1 + (n_project - 1) * 5 + 0].x = results.CPVT[0]
     d[1 + (n_project - 1) * 5 + 0].y = results.CPVT[1]
     d[1 + (n_project - 1) * 5 + 0].line = { "color": colors[n_project], "width": 2, "dash": 'dot' }
@@ -141,10 +138,3 @@ function scatterTs(n_projects, i_rate, project_details, es_en, es_mt, es_lb, es_
   }
   return d
 }
-// function setData() {
-//   return [{
-//     x: [1, 2, 3, 4],
-//     y: [10 + Math.random(), 15 + Math.random(), 13 + Math.random(), 27 * Math.random()],
-//     type: "scatter"
-//   }]
-// }
