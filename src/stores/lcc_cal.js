@@ -145,24 +145,7 @@ export function calc_lcc(i_rate,
     //   console.log ("i : ", i)
     }
    
-   const CPVTF = [
-        [],
-      [],
-      [],
-      [],
-      [],
-      []
-      ]
-    
-    for (var i=0; i < exp_life; i ++){
-      CPVTF[0][i] = -1*( CAPV[0][i])
-      CPVTF[1][i] = -1*( CAPV[1][i]+ CMAPV[1][i])
-      CPVTF[2][i] = -1*( CAPV[2][i]+ CMAPV[2][i])
-      CPVT[3][i] = -1*( CAPV[3][i]+ CMAPV[3][i])
-      CPVTF[4][i] = ( CAPV[4][i])
-      CPVTF[5][i] = CPVT[1][i]+CPVT[2][i]+CPVT[3][i]+CPVT[4][i]-init_cost
-    }
-    
+   
     return {AV, MAV, PAV, MAPV, CAPV, CMAPV, CPVT}
     }
   
