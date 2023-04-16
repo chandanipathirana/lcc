@@ -1,34 +1,25 @@
-
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import{calc_lcc} from './lcc_cal.js'
+import { useLocalStorage } from "@vueuse/core"
 
 export const useDataStore = defineStore('maindata', () => {
-  const n_projects = ref(1)
-  const currency = ref('EUR')
-  const i_rate = ref(5)
-  const es_en = ref(2)
-  const es_mt = ref(2)
-  const es_lb = ref(2)
-  const es_in = ref(2)
+  const n_projects = ref(useLocalStorage('n_projects', 1))
+  const currency = ref(useLocalStorage('currency', 'EUR'))
+  const i_rate = ref(useLocalStorage('i_rate',5))
+  const es_en = ref(useLocalStorage('es_en',2))
+  const es_mt = ref(useLocalStorage('es_mt',2))
+  const es_lb = ref(useLocalStorage('es_lb',2))
+  const es_in = ref(useLocalStorage('es_in',2))
   const test_projects = []
-  const project_details = ref({})
-  for (var i = 1; i <= 3; i++ ){
-    // project_details.value['P'+i]={
-      project_details.value[i]={
-      init_cost: 250000+(i-1)*50000, 
-      exp_life: 20,
-      an_en: 9000-(i-1)*2000,
-      an_mt: 12000-(i-1)*3000,
-      an_lb: 8000-(i-1)*2000,
-      an_in: 50000+(i-1)*20000,
-      mulAn_en: 10000,
-      mulAn_mt: 9000,
-      mulAn_lb: 12000,
-      mulAn_cy: 5,
-    }
+  const project_details = ref(useLocalStorage('project_details', init_projects()))
+
+
+   
+  if (localStorage.getItem("maindata")){
+    console.log("local storage", JSON.parse(localStorage.getItem("maindata")))
   }
-  
+
 
   // colors[n_project]log(project_details.value.P1.init_cost)
 
@@ -63,6 +54,25 @@ export const useDataStore = defineStore('maindata', () => {
 })
 
 
+
+function init_projects() {
+  const pdvalue=[]
+  for (var i = 1; i <= 3; i++) {
+    pdvalue[i] = {
+      init_cost: 250000 + (i - 1) * 50000,
+      exp_life: 20,
+      an_en: 9000 - (i - 1) * 2000,
+      an_mt: 12000 - (i - 1) * 3000,
+      an_lb: 8000 - (i - 1) * 2000,
+      an_in: 50000 + (i - 1) * 20000,
+      mulAn_en: 10000,
+      mulAn_mt: 9000,
+      mulAn_lb: 12000,
+      mulAn_cy: 5,
+    }
+  }
+  return pdvalue
+}
 
 function pieChart(d) {
   d = [{

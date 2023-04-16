@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.11.6",
+    "@vueuse/core": "^10.0.2",
     "bootstrap": "^5.2.3",
     "pinia": "^2.0.26",
     "plotly.js-dist": "^2.16.4",

@@ -1,8 +1,8 @@
 <template>
    <div>
-        <select name="currencyCountry" id="btn-froup" v-model="storeData.currency">
+        <select name="currencyCountry" id="btn-froup" style="width:200px;" v-model="storeData.currency">
             <option v-for="country in countries" :key="country.countryCode"  
-            :value="country.currencyCode" :selected="EUR">{{country.currencyCode}} ({{ country.countryName }}>
+            :value="country.currencyCode" :selected="EUR">{{country.currencyCode}} ({{ country.countryName }})
             </option> 
             
         </select>
