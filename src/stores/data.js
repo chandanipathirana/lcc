@@ -25,26 +25,47 @@ export const useDataStore = defineStore('maindata', () => {
   const layout = ref({})
   var colors = ['yellow', 'darkblue', 'firebrick', 'purple','darkgray', 'darkgreen']
   config.value= { displayModeBar: true }
-  layout.value= { margin: {l:40, r:20, t:30, b:20} ,   yaxis :
-  {
-    showline:'True', 
-    linewidth:1.5, 
-    linecolor:'gray',
-    mirror: true,
-  },
-  xaxis :
-  {
-    showline:'True', 
-    linewidth:1.5, 
-    linecolor:'gray',
-    mirror: true,
-  },
-
-  }
-
 
 
   function getData(type){
+
+    layout.value= { 
+    margin: {l:60, r:10, t:30, b:40} ,   
+    yaxis :
+    {
+      showline:'True', 
+      linewidth:1.5, 
+      linecolor:'gray',
+      mirror: true,
+      title: {
+        text: currency.value,
+        font: {
+          size: 18,
+        }
+      }
+    },
+    xaxis :
+    {
+      showline:'True', 
+      linewidth:1.5, 
+      linecolor:'gray',
+      mirror: true,
+      title: {
+        text: 'Year',
+        font: {
+          size: 18,
+        }
+      }
+    },
+    legend: {
+      x: .0,
+      y: 1.,
+      orientation: "h",
+      bgcolor:  'rgba(0,0,0,0)'
+    },
+   
+
+  }
 
     var chartData = scatterTs(n_projects, i_rate, project_details, es_en, es_mt, es_lb, es_in, colors)
   
@@ -157,7 +178,7 @@ function scatterTs(n_projects, i_rate, project_details, es_en, es_mt, es_lb, es_
     current.x = results.CPVT[0]
     current.y = results.CPVT[5]
     current.line = { "color": colors[n_project], "width": 4, "dash": 'solid' }
-    current.name = n_project.toString() + ' Net Income'
+    current.name = n_project.toString() + ' Profit'
     current=d[1 + (n_project - 1) * 6 + 3]
     current.x = results.CPVT[0]
     current.y = results.CPVT[6]

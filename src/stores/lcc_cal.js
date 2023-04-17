@@ -147,6 +147,14 @@ export function calc_lcc(i_rate,
     //   console.log ("i : ", i)
     }
    
+    // add .99999 value to the front of the CPVT
+    CPVT[0].unshift(0.99999999)
+    CPVT[1].unshift(NaN)
+    CPVT[2].unshift(NaN)
+    CPVT[3].unshift(NaN)
+    CPVT[4].unshift(NaN)
+    CPVT[5].unshift(-1*init_cost)
+    CPVT[6].unshift(NaN)
     // add zero values to the beginning of the CPVT
     CPVT[0].unshift(0)
     CPVT[1].unshift(NaN)
@@ -155,6 +163,7 @@ export function calc_lcc(i_rate,
     CPVT[4].unshift(NaN)
     CPVT[5].unshift(-1*init_cost)
     CPVT[6].unshift(NaN)
+    
 
     return {AV, MAV, PAV, MAPV, CAPV, CMAPV, CPVT}
     }
