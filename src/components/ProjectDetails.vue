@@ -14,10 +14,7 @@
                 <tbody>
                   
                     <tr>
-                    <!-- <th scope="row">Initial cost - {{projectNumber}}</th> -->
-                    <!-- <th :class="{testHead: projectNumber>1}" scope="row">Initial Cost</th>  -->
-                    <th :class="{testHead: projectNumber>1}" scope="col">Init. Cost</th> 
-                    
+                        <th :class="{testHead: projectNumber>1}" scope="col">In.Cost</th> 
                     <td >
                         <div class="col">
                             <div class="input-group mb-1">
@@ -31,7 +28,7 @@
                     </td>
                     </tr>
                     <tr>
-                    <th :class="{testHead: projectNumber>1}" scope="row">Exp. life</th>
+                    <th :class="{testHead: projectNumber>1}" scope="col">Exp.life</th>
                     <td >
                         <div class="col">
                             <div class="input-group mb-1">

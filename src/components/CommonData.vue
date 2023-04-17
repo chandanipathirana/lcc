@@ -4,21 +4,23 @@
       <div class="row">
         <div class="col-md-12">
            <div class="row mb-1">
-             <label for="No of Projects" class="col-md-1 col-form-label">#Projects </label>
-            <div class="col-md-1">
+             <div class="col-md-4">
+              <div class="row">
+              <label for="No of Projects" >#Projects </label>
               <select  min="1" max="3" class="form-control" v-model="storeData.n_projects" >
                 <option v-for="n in 3" :key="n" :value="n">{{n}}</option>
               </select>
+              </div>
             </div>
-            <label for="Currency" class="col-md-1 col-form-label">Currency</label>
-            <div class="col-md-3">
+            <div class="col-md-4">
+            <label for="Currency" >Currency</label>
+
               <CurrencyCountry />
             </div>
-            
-            <label for="Interest rate" class="col-md-1 col-form-label">Interest rate</label>
-            <div class="col-md-2 ">
-              <div class="input-group">
-                <input type="text" class="form-control" id="autoSizingInputGroup" placeholder="5" name="i_rate" v-model="storeData.i_rate">
+            <div class="col-md-4 ">
+            <label for="Interest rate" >Interest rate</label>
+                   <div class="input-group">
+                <input type="number" class="form-control" min="0"  id="autoSizingInputGroup" placeholder="5" name="i_rate" v-model="storeData.i_rate">
                 <span class="input-group-text">%</span>
               </div>
             </div>
@@ -27,7 +29,7 @@
       </div>
 
       <div>
-         <h4>Escalation Cost</h4>
+         <h4>Escalation Rates</h4>
       </div>
 
       <div class="row">

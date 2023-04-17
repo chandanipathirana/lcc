@@ -13,8 +13,8 @@ export const useDataStore = defineStore('maindata', () => {
   const es_in = ref(useLocalStorage('es_in',2))
   const project_details = ref(useLocalStorage('project_details', init_projects()))
    
-  if (localStorage.getItem("maindata")){
-    console.log("local storage", JSON.parse(localStorage.getItem("maindata")))
+  if (n_projects.value < 1 ){
+    n_projects.value = 1
   }
 
 
@@ -25,7 +25,23 @@ export const useDataStore = defineStore('maindata', () => {
   const layout = ref({})
   var colors = ['yellow', 'darkblue', 'firebrick', 'purple','darkgray', 'darkgreen']
   config.value= { displayModeBar: true }
-  layout.value= { margin: {l:20, r:20, t:30, b:20} }
+  layout.value= { margin: {l:40, r:20, t:30, b:20} ,   yaxis :
+  {
+    showline:'True', 
+    linewidth:1.5, 
+    linecolor:'gray',
+    mirror: true,
+  },
+  xaxis :
+  {
+    showline:'True', 
+    linewidth:1.5, 
+    linecolor:'gray',
+    mirror: true,
+  },
+
+  }
+
 
 
   function getData(type){
@@ -83,7 +99,6 @@ function pieChart(d) {
 
 function scatterTs(n_projects, i_rate, project_details, es_en, es_mt, es_lb, es_in, colors) {
   var d = [{}]
-
   for (var n_project = 1; n_project <= n_projects.value; n_project++) {
     // console.log("Project - ", n_project)
     // colors[n_project]log("exp_life - ", project_details.value[n_project].exp_life)
@@ -106,7 +121,7 @@ function scatterTs(n_projects, i_rate, project_details, es_en, es_mt, es_lb, es_
 
     // colors[n_project]log("Results : ", n_project, "expected life : ", project_details.value[n_project].exp_life, results)//results.CPVT[5][0], results.CPVT[5].slice(-1))
     // colors[n_project]log("project_details", project_details.value)
-    for (var i = 0; i < 5; i++) {
+    for (var i = 0; i < 6; i++) {
       d.push({
         x: [],
         y: [],
@@ -114,26 +129,40 @@ function scatterTs(n_projects, i_rate, project_details, es_en, es_mt, es_lb, es_
       })
     }
     //console.log("d : ", d.length)
-    d[1 + (n_project - 1) * 5 + 0].x = results.CPVT[0]
-    d[1 + (n_project - 1) * 5 + 0].y = results.CPVT[1]
-    d[1 + (n_project - 1) * 5 + 0].line = { "color": colors[n_project], "width": 2, "dash": 'dot' }
-    d[1 + (n_project - 1) * 5 + 0].name = n_project.toString() + ' Energy'
-    d[1 + (n_project - 1) * 5 + 1].x = results.CPVT[0]
-    d[1 + (n_project - 1) * 5 + 1].y = results.CPVT[2]
-    d[1 + (n_project - 1) * 5 + 1].line = { "color": colors[n_project], "width": 2, "dash": 'dashdot' }
-    d[1 + (n_project - 1) * 5 + 1].name = n_project.toString() + ' Material'
-    d[1 + (n_project - 1) * 5 + 2].x = results.CPVT[0]
-    d[1 + (n_project - 1) * 5 + 2].y = results.CPVT[3]
-    d[1 + (n_project - 1) * 5 + 2].line = { "color": colors[n_project], "width": 2, "dash": 'dash' }
-    d[1 + (n_project - 1) * 5 + 2].name = n_project.toString() + ' Labour'
-    d[1 + (n_project - 1) * 5 + 3].x = results.CPVT[0]
-    d[1 + (n_project - 1) * 5 + 3].y = results.CPVT[4]
-    d[1 + (n_project - 1) * 5 + 3].line = { "color": colors[n_project], "width": 2, "dash": 'solid' }
-    d[1 + (n_project - 1) * 5 + 3].name = n_project.toString() + ' Income'
-    d[1 + (n_project - 1) * 5 + 4].x = results.CPVT[0]
-    d[1 + (n_project - 1) * 5 + 4].y = results.CPVT[5]
-    d[1 + (n_project - 1) * 5 + 4].line = { "color": colors[n_project], "width": 4, "dash": 'solid' }
-    d[1 + (n_project - 1) * 5 + 4].name = n_project.toString() + ' Net Income'
+    var current
+    current=d[1 + (n_project - 1) * 6 + 0]
+    current.x = results.CPVT[0]
+    current.y = results.CPVT[1]
+    current.line = { "color": colors[n_project], "width": 2, "dash": 'dot'}
+    current.name = n_project.toString() + ' Energy'
+    current.visible='legendonly'
+    current=d[1 + (n_project - 1) * 6 + 1]
+    current.x = results.CPVT[0]
+    current.y = results.CPVT[2]
+    current.line = { "color": colors[n_project], "width": 2, "dash": 'dashdot' }
+    current.name = n_project.toString() + ' Material'
+    current.visible='legendonly'
+    current=d[1 + (n_project - 1) * 6 + 2]
+    current.x = results.CPVT[0]
+    current.y = results.CPVT[3]
+    current.line = { "color": colors[n_project], "width": 2, "dash": 'dash' }
+    current.name = n_project.toString() + ' Labour'
+    current.visible='legendonly'
+    current=d[1 + (n_project - 1) * 6 + 4]
+    current.x = results.CPVT[0]
+    current.y = results.CPVT[4]
+    current.line = { "color": colors[n_project], "width": 2, "dash": 'solid' }
+    current.name = n_project.toString() + ' Income'
+    current=d[1 + (n_project - 1) * 6 + 5]
+    current.x = results.CPVT[0]
+    current.y = results.CPVT[5]
+    current.line = { "color": colors[n_project], "width": 4, "dash": 'solid' }
+    current.name = n_project.toString() + ' Net Income'
+    current=d[1 + (n_project - 1) * 6 + 3]
+    current.x = results.CPVT[0]
+    current.y = results.CPVT[6]
+    current.line = { "color": colors[n_project], "width": 1, "dash": 'solid' }
+    current.name = n_project.toString() + ' Expense'
 
   }
   return d

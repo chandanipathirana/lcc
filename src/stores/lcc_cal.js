@@ -132,6 +132,7 @@ export function calc_lcc(i_rate,
       [],
       [],
       [],
+      [],
       []
       ]
     //   console.log ("HERE", exp_life)
@@ -142,10 +143,19 @@ export function calc_lcc(i_rate,
       CPVT[3][i] = -1*( CAPV[3][i]+ CMAPV[3][i])
       CPVT[4][i] = ( CAPV[4][i])
       CPVT[5][i] = CPVT[1][i]+CPVT[2][i]+CPVT[3][i]+CPVT[4][i]-init_cost
+      CPVT[6][i] = CPVT[1][i]+CPVT[2][i]+CPVT[3][i]
     //   console.log ("i : ", i)
     }
    
-   
+    // add zero values to the beginning of the CPVT
+    CPVT[0].unshift(0)
+    CPVT[1].unshift(NaN)
+    CPVT[2].unshift(NaN)
+    CPVT[3].unshift(NaN)
+    CPVT[4].unshift(NaN)
+    CPVT[5].unshift(-1*init_cost)
+    CPVT[6].unshift(NaN)
+
     return {AV, MAV, PAV, MAPV, CAPV, CMAPV, CPVT}
     }
   
