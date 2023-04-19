@@ -67,11 +67,12 @@ export const useDataStore = defineStore('maindata', () => {
 
   }
 
-    var chartData = scatterTs(n_projects, i_rate, project_details, es_en, es_mt, es_lb, es_in, colors)
+  var chartData = scatterTs(n_projects, i_rate, project_details, es_en, es_mt, es_lb, es_in, colors)  
   
-    if (type=="pie"){
-      chartData = pieChart(chartData)
-    }
+  if (type=="bar"){
+      chartData = barChart(chartData, n_projects, colors) // extract bar chart data from scatter data
+      layout.value.xaxis.title.text = 'Categories'
+  }
   
   
     //Plotly seem to mutate these values. So, to ensure it does not happen, we deepcopy things. 
@@ -108,14 +109,35 @@ function init_projects() {
   return pdvalue
 }
 
-function pieChart(d) {
-  d = [{
-    values: d[0].y,
-    labels: d[0].x,
-    type: "pie",
-    sort: false
-  }]
-  return d
+function barChart(d, n_projects, colors) {
+  var dend=[]
+  for (var i = 1; i < d.length; i++) {
+    dend.push(d[i].y.slice(-1).pop())
+  }
+  const xvals = {0:'Energy', 1:'Material', 2:'Labour', 3: 'Total cost', 4:'Income', 5:'Profit'}
+
+
+  var chartData= []
+  for (var n_project = 1; n_project <= n_projects.value; n_project++) {
+    var x=[]
+    var y=[]
+    for (var i=0; i<6; i++){
+      x.push(xvals[i])
+      y.push(dend[(n_project-1)*6+i])
+    }
+    chartData.push({
+      x: x,
+      y: y,
+      type: 'bar',
+      name: 'Project ' + n_project,
+      marker: {
+        color: colors[n_project]
+      }
+    })  
+  }
+  console.log("Bar Chart", chartData)
+  return chartData
+  
 }
 
 function scatterTs(n_projects, i_rate, project_details, es_en, es_mt, es_lb, es_in, colors) {
