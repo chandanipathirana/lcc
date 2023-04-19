@@ -177,35 +177,35 @@ function scatterTs(n_projects, i_rate, project_details, es_en, es_mt, es_lb, es_
     current.x = results.CPVT[0]
     current.y = results.CPVT[1]
     current.line = { "color": colors[n_project], "width": 2, "dash": 'dot'}
-    current.name = n_project.toString() + ' Energy'
+    current.name = 'Project ' + n_project.toString() + ' Energy'
     current.visible='legendonly'
     current=d[1 + (n_project - 1) * 6 + 1]
     current.x = results.CPVT[0]
     current.y = results.CPVT[2]
     current.line = { "color": colors[n_project], "width": 2, "dash": 'dashdot' }
-    current.name = n_project.toString() + ' Material'
+    current.name = 'Project ' + n_project.toString() + ' Material'
     current.visible='legendonly'
     current=d[1 + (n_project - 1) * 6 + 2]
     current.x = results.CPVT[0]
     current.y = results.CPVT[3]
     current.line = { "color": colors[n_project], "width": 2, "dash": 'dash' }
-    current.name = n_project.toString() + ' Labour'
+    current.name = 'Project ' + n_project.toString() + ' Labour'
     current.visible='legendonly'
     current=d[1 + (n_project - 1) * 6 + 4]
     current.x = results.CPVT[0]
     current.y = results.CPVT[4]
     current.line = { "color": colors[n_project], "width": 2, "dash": 'solid' }
-    current.name = n_project.toString() + ' Income'
+    current.name = 'Project ' + n_project.toString() + ' Income'
     current=d[1 + (n_project - 1) * 6 + 5]
     current.x = results.CPVT[0]
     current.y = results.CPVT[5]
     current.line = { "color": colors[n_project], "width": 4, "dash": 'solid' }
-    current.name = n_project.toString() + ' Profit'
+    current.name = 'Project ' + n_project.toString() + ' Profit'
     current=d[1 + (n_project - 1) * 6 + 3]
     current.x = results.CPVT[0]
     current.y = results.CPVT[6]
     current.line = { "color": colors[n_project], "width": 1, "dash": 'solid' }
-    current.name = n_project.toString() + ' Expense'
+    current.name = 'Project ' + n_project.toString() + ' Expense'
 
   }
   return d
