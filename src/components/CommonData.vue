@@ -2,7 +2,7 @@
   <div class="container-fluid text-center">
     <div class="container-fluid p-1 bg-primary text-white text-center">
   <div class="row">
-        <div class="col"><h1>Bow-Tie Diagram for Risk Analysis</h1></div>
+        <div class="col"><h1>Life Cycle Analysis Tool</h1></div>
         <div class="col text-right">An Infrastructure Asset Management Tool 
           (c) Chandani Pathirana 
     <!--<a href="mailto:chandani@pathirana.net" ><mark style="color:white;">//</mark></a> -->
