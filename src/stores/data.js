@@ -114,7 +114,7 @@ function barChart(d, n_projects, colors) {
   for (var i = 1; i < d.length; i++) {
     dend.push(d[i].y.slice(-1).pop())
   }
-  const xvals = {0:'Energy', 1:'Material', 2:'Labour', 3: 'Total cost', 4:'Income', 5:'Profit'}
+  const xvals = {0:'Energy', 1:'Material', 2:'Labour', 3: 'Total O&M', 4:'Income', 5:'Profit'}
 
 
   var chartData= []
